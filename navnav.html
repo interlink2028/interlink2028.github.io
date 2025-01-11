@@ -17,6 +17,8 @@
     padding: 1rem;
     background: var(--header-background);
     backdrop-filter: blur(10px);
+    justify-content: center; /* Center the nav items */
+    flex-wrap: wrap; /* Allow wrapping of links on mobile */
 }
 
 .nav-link {
@@ -85,48 +87,35 @@
 }
 
 @media (min-width: 769px) {
-    .sidebar, #open-sidebar-button {
-        display: none;
-    }
-
-    /* Hide Sitemap link on desktop */
     .nav .sitemap {
-        display: none;
+        display: none;  /* Hide Sitemap link on desktop */
     }
 }
 </style>
 </head>
 <body>
 
-<!-- Navigation for Desktop -->
+<!-- Single Navigation (Both Desktop and Mobile) -->
 <nav class="nav">
-    <div class="nav-links">
-        <a href="https://interlinkcvhs.org" class="nav-link"><strong>Home</strong></a>
-        <div class="dropdown">
-            <button class="dropbtn"><strong>Explore</strong></button>
-            <div class="dropdown-content">
-                <a href="https://interlinkcvhs.org/requests"><strong>Request Form</strong></a>
-                <a href="https://interlinkai.streamlit.app/"><strong>Interlink AI</strong></a>
-                <a href="https://interlinkcvhs-peer-tutoring.mn.co/"><strong>Peer Tutoring</strong></a>
-                <a href="https://interlinkcvhs.org/extra/deepdives"><strong>Podcasts</strong></a>
-                <a href="https://interlinkcvhs.org/qotd"><strong>QOTD</strong></a>
-                <a href="https://interlinkcvhs.org/extra/productivity"><strong>Productivity Tools</strong></a>
-            </div>
+    <a href="https://interlinkcvhs.org" class="nav-link"><strong>Home</strong></a>
+    <div class="dropdown">
+        <button class="dropbtn"><strong>Explore</strong></button>
+        <div class="dropdown-content">
+            <a href="https://interlinkcvhs.org/requests"><strong>Request Form</strong></a>
+            <a href="https://interlinkai.streamlit.app/"><strong>Interlink AI</strong></a>
+            <a href="https://interlinkcvhs-peer-tutoring.mn.co/"><strong>Peer Tutoring</strong></a>
+            <a href="https://interlinkcvhs.org/extra/deepdives"><strong>Podcasts</strong></a>
+            <a href="https://interlinkcvhs.org/qotd"><strong>QOTD</strong></a>
+            <a href="https://interlinkcvhs.org/extra/productivity"><strong>Productivity Tools</strong></a>
         </div>
-        <a href="https://interlinkcvhs.org/subject-study" class="nav-link"><strong>Subject Study</strong></a>
-        <a href="https://interlinkcvhs.org/qbank" class="nav-link"><strong>QBank</strong></a>
-        <a href="https://interlinkcvhs.org/quizlets" class="nav-link"><strong>Quizlets</strong></a>
-        <a href="https://interlinkcvhs.org/credits" class="nav-link"><strong>Credits</strong></a>
-        <a href="https://interlinkcvhs.org/sitemap" class="nav-link sitemap"><strong>Sitemap</strong></a> <!-- Added Sitemap to desktop nav -->
     </div>
-</nav>
+    <a href="https://interlinkcvhs.org/subject-study" class="nav-link"><strong>Subject Study</strong></a>
+    <a href="https://interlinkcvhs.org/qbank" class="nav-link"><strong>QBank</strong></a>
+    <a href="https://interlinkcvhs.org/quizlets" class="nav-link"><strong>Quizlets</strong></a>
+    <a href="https://interlinkcvhs.org/credits" class="nav-link"><strong>Credits</strong></a>
 
-<!-- Navigation for Mobile -->
-<nav class="nav">
-    <div class="nav-links">
-        <!-- Only the Sitemap link will show on mobile -->
-        <a href="https://interlinkcvhs.org/sitemap" class="nav-link sitemap"><strong>Sitemap</strong></a>
-    </div>
+    <!-- Will be removed/added based on screen width -->
+    <a href="https://interlinkcvhs.org/sitemap" class="nav-link sitemap"><strong>Sitemap</strong></a>
 </nav>
 
 <!-- Script to ensure that the sitemap link is hidden on desktop -->
