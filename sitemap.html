@@ -106,34 +106,6 @@
             opacity: 1;
         }
 
-        @media (max-width: 768px) {
-            .nav {
-                flex-direction: row; /* Make it horizontal on mobile */
-                justify-content: center;
-                align-items: center;
-            }
-
-            .nav-link {
-                display: none; /* Hide all nav links except the sitemap */
-            }
-
-            /* Show only Sitemap link on mobile */
-            .nav .sitemap {
-                display: block;
-            }
-
-            /* Remove the sidebar and overlay on mobile */
-            .sidebar, #overlay, #open-sidebar-button {
-                display: none;
-            }
-        }
-
-        @media (min-width: 769px) {
-            .sidebar, #open-sidebar-button {
-                display: none;
-            }
-        }
-
         /* Additional Styling */
         .search-container {
             margin: 20px auto;
