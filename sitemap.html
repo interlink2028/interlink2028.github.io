@@ -14,9 +14,11 @@
 
         :root {
             --background-color: #ffffff;
-            --text-color: #000000;
+            --text-color: #ffffff;
             --header-background: rgba(255, 255, 255, 0.1);
             --border-color: #ddd;
+            --hover-background: rgba(255, 255, 255, 0.2);
+            --dropdown-background: rgba(0, 0, 0, 0.5);
         }
 
         /* Main Section Styles */
@@ -41,12 +43,18 @@
             padding: 0.5rem 1rem;
             margin: 0.5rem 0; /* Margin between links */
             font-weight: normal;
+            font-size: 18px;
+            transition: background 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: var(--hover-background);
+            border-radius: 5px;
         }
 
         .dropdown {
             position: relative;
             display: inline-block;
-            font-weight: normal;
         }
 
         .dropbtn {
@@ -56,19 +64,27 @@
             cursor: pointer;
             color: var(--text-color);
             font-family: inherit;
-            font-size: inherit;
-            margin: 0.5rem 0;
+            font-size: 18px;
             font-weight: normal;
+            transition: background 0.3s ease;
+        }
+
+        .dropbtn:hover {
+            background: var(--hover-background);
+            border-radius: 5px;
         }
 
         .dropdown-content {
             display: none;
             position: absolute;
-            background: var(--background-color);
-            min-width: 160px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            background: var(--dropdown-background);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
             z-index: 1;
             font-weight: normal;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: opacity 0.3s ease;
         }
 
         .dropdown-content a {
@@ -77,14 +93,17 @@
             text-decoration: none;
             display: block;
             font-weight: normal;
+            font-size: 16px;
+            transition: background 0.3s ease;
         }
 
         .dropdown-content a:hover {
-            background: rgba(128, 128, 128, 0.1);
+            background: var(--hover-background);
         }
 
         .dropdown:hover .dropdown-content {
             display: block;
+            opacity: 1;
         }
 
         @media (max-width: 768px) {
