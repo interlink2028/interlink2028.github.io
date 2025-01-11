@@ -53,48 +53,24 @@
             max-width: calc(33.333% - 14px);
         }
 
-        /* Responsive adjustments */
+        /* Removed mobile adjustments for .period-table and .tagline */
         @media screen and (max-width: 768px) {
             .glass-header {
                 padding: 10px;
             }
-            .logo-container {
-                padding-right: 50px;
-                flex-direction: column;
-                text-align: center;
-            }
 
-            /* Make the tagline font size larger on small screens */
-            .tagline h1 {
-                font-size: 3vw; /* Increase font size for mobile screens */
-            }
+            /* Make the tagline font size larger on small screens (removed) */
+            /* .tagline h1 {
+                font-size: 3vw;
+            } */
 
-            /* Adjust assignment layout to one per row on mobile */
+            /* Adjust assignment layout to one per row on mobile (unchanged) */
             .assignments-row {
-                flex-direction: column; /* Stack assignments vertically */
+                flex-direction: column;
             }
             .assignment-card {
-                min-width: 100%; /* Take full width on mobile */
+                min-width: 100%;
                 max-width: 100%;
-            }
-
-            /* Modify the period table layout for mobile screens */
-            .period-table {
-                display: grid;
-                grid-template-columns: 1fr 3fr; /* Two columns: one small and one larger */
-                gap: 10px;
-                width: 100%;
-            }
-            .period-table th,
-            .period-table td {
-                text-align: left; /* Align text to the left for better readability */
-            }
-            .period-table td:first-child {
-                width: 50px; /* Make the first column (for P1, P2...) smaller */
-                text-align: center;
-            }
-            .period-table select {
-                width: 100%; /* Allow select dropdown to take full width */
             }
         }
     </style>
