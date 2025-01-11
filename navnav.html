@@ -2,17 +2,23 @@
 <html>
 <head>
 <style>
-/* Base styles */
+:root {
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --header-background: rgba(255, 255, 255, 0.1);
+    --border-color: #ddd;
+}
+
 .nav {
     display: flex;
     align-items: center;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--header-background);
     backdrop-filter: blur(10px);
 }
 
 .nav-link {
-    color: white;
+    color: var(--text-color);
     text-decoration: none;
     padding: 0.5rem 1rem;
     margin: 0 0.5rem;
@@ -30,7 +36,7 @@
     border: none;
     padding: 0.5rem 1rem;
     cursor: pointer;
-    color: white;
+    color: var(--text-color);
     font-family: inherit;
     font-size: inherit;
     margin: 0 0.5rem;
@@ -40,8 +46,7 @@
 .dropdown-content {
     display: none;
     position: absolute;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
+    background: var(--background-color);
     min-width: 160px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     z-index: 1;
@@ -49,7 +54,7 @@
 }
 
 .dropdown-content a {
-    color: white;
+    color: var(--text-color);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -57,19 +62,36 @@
 }
 
 .dropdown-content a:hover {
-    background: rgba(255, 255, 255, 0.1);
-    font-weight: normal;
+    background: rgba(128, 128, 128, 0.1);
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+@media screen and (max-width: 768px) {
+    /* Hide all nav links except for Sitemap on mobile */
+    .nav .nav-link:not(.sitemap) {
+        display: none;
+    }
+
+    /* Show only Sitemap link on mobile */
+    .nav .sitemap {
+        display: block;
+    }
+}
+
+@media (min-width: 769px) {
+    .sidebar, #open-sidebar-button {
+        display: none;
+    }
+}
 </style>
 </head>
 <body>
 
+<!-- Navigation for Desktop -->
 <nav class="nav">
-    
     <div class="nav-links">
         <a href="https://interlinkcvhs.org" class="nav-link"><strong>Home</strong></a>
         <div class="dropdown">
@@ -90,12 +112,13 @@
     </div>
 </nav>
 
-<script>
-function toggleMenu() {
-    const navLinks = document.querySelector('.nav-links');
-    navLinks.classList.toggle('active');
-}
-</script>
+<!-- Navigation for Mobile -->
+<nav class="nav">
+    <div class="nav-links">
+        <!-- Only the Sitemap link will show on mobile -->
+        <a href="https://interlinkcvhs.org/sitemap" class="nav-link sitemap"><strong>Sitemap</strong></a>
+    </div>
+</nav>
 
 </body>
 </html>
