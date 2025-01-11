@@ -188,7 +188,6 @@ nav {
     align-items: center;
     padding: 1rem;
     background: var(--glass-background);
-    backdrop-filter: blur(10px);
 }
 
 .nav-link {
