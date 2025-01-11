@@ -73,8 +73,8 @@
 
 /* Mobile-specific styles */
 @media screen and (max-width: 768px) {
-    .nav .nav-link:not(.sitemap) {
-        display: none;
+    .nav .nav-link:not(.sitemap), .nav .dropdown {
+        display: none;  /* Hide all nav links except Sitemap and remove Explore dropdown */
     }
 
     /* Show only Sitemap link on mobile */
@@ -131,10 +131,14 @@
 <script>
     function adjustNavLinks() {
         const sitemapLink = document.querySelector('.sitemap');
+        const exploreDropdown = document.querySelector('.dropdown');
+        
         if (window.innerWidth > 768) {
-            sitemapLink.style.display = 'none';  // Hide on desktop
+            sitemapLink.style.display = 'none';  // Hide Sitemap on desktop
+            exploreDropdown.style.display = 'inline-block';  // Show the Explore dropdown on desktop
         } else {
-            sitemapLink.style.display = 'block'; // Show on mobile
+            sitemapLink.style.display = 'block'; // Show Sitemap on mobile
+            exploreDropdown.style.display = 'none';  // Hide the Explore dropdown on mobile
         }
     }
 
