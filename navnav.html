@@ -99,7 +99,7 @@
 <body>
 
 <!-- Navigation for Desktop -->
-<nav class="nav" id="desktop-nav">
+<nav class="nav">
     <div class="nav-links">
         <a href="https://interlinkcvhs.org" class="nav-link"><strong>Home</strong></a>
         <div class="dropdown">
@@ -117,30 +117,30 @@
         <a href="https://interlinkcvhs.org/qbank" class="nav-link"><strong>QBank</strong></a>
         <a href="https://interlinkcvhs.org/quizlets" class="nav-link"><strong>Quizlets</strong></a>
         <a href="https://interlinkcvhs.org/credits" class="nav-link"><strong>Credits</strong></a>
+        <a href="https://interlinkcvhs.org/sitemap" class="nav-link sitemap"><strong>Sitemap</strong></a> <!-- Added Sitemap to desktop nav -->
     </div>
 </nav>
 
 <!-- Navigation for Mobile -->
-<nav class="nav" id="mobile-nav">
+<nav class="nav">
     <div class="nav-links">
         <!-- Only the Sitemap link will show on mobile -->
         <a href="https://interlinkcvhs.org/sitemap" class="nav-link sitemap"><strong>Sitemap</strong></a>
     </div>
 </nav>
 
-<!-- Script to hide/show nav based on screen size -->
+<!-- Script to ensure that the sitemap link is hidden on desktop -->
 <script>
     function adjustNavLinks() {
-        const desktopNav = document.getElementById('desktop-nav');
-        const mobileNav = document.getElementById('mobile-nav');
+        const sitemapLink = document.querySelector('.sitemap');
+        const exploreDropdown = document.querySelector('.dropdown');
         
-        // Check if the screen size is mobile or desktop
         if (window.innerWidth > 768) {
-            desktopNav.style.display = 'flex';  // Show desktop navigation
-            mobileNav.style.display = 'none';   // Hide mobile navigation
+            sitemapLink.style.display = 'none';  // Hide Sitemap on desktop
+            exploreDropdown.style.display = 'inline-block';  // Show the Explore dropdown on desktop
         } else {
-            desktopNav.style.display = 'none';  // Hide desktop navigation
-            mobileNav.style.display = 'flex';   // Show mobile navigation
+            sitemapLink.style.display = 'block'; // Show Sitemap on mobile
+            exploreDropdown.style.display = 'none';  // Hide the Explore dropdown on mobile
         }
     }
 
