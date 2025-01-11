@@ -65,11 +65,6 @@
 </script>
 <body class="dark-theme">
     <div id="banner-container"></div>
-    <button id="open-sidebar-button" onclick="openSidebar()">
-        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#c9c9c9">
-            <path d="M165.13-254.62q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.86q7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.87q-7.22 7.12-17.9 7.12H165.13Z"/>
-        </svg>
-    </button>
     <header class="glass-header">
         <div class="logo-container">
             <a href="https://interlinkcvhs.org">
@@ -310,27 +305,6 @@
                     '<p>Error loading banner. Please try again later.</p>';
             }
         }
-
-        function openSidebar() {
-            document.getElementById('sidebar').classList.add('active');
-            document.getElementById('overlay').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeSidebar() {
-            document.getElementById('sidebar').classList.remove('active');
-            document.getElementById('overlay').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-        
-        // Close sidebar when clicking outside
-        document.addEventListener('click', function(event) {
-            const sidebar = document.getElementById('sidebar');
-            const button = document.getElementById('open-sidebar-button');
-            if (!sidebar.contains(event.target) && !button.contains(event.target)) {
-                closeSidebar();
-            }
-        });
         
         document.addEventListener('DOMContentLoaded', () => {
             loadBanner();
@@ -338,6 +312,5 @@
             fetchAssignments();
         });
     </script>
-    <div id="overlay" onclick="closeSidebar()"></div>
 </body>
 </html>
