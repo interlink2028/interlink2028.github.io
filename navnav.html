@@ -99,7 +99,7 @@
 <body>
 
 <!-- Navigation for Desktop -->
-<nav class="nav">
+<nav class="nav" id="desktop-nav">
     <div class="nav-links">
         <a href="https://interlinkcvhs.org" class="nav-link"><strong>Home</strong></a>
         <div class="dropdown">
@@ -121,25 +121,26 @@
 </nav>
 
 <!-- Navigation for Mobile -->
-<nav class="nav">
+<nav class="nav" id="mobile-nav">
     <div class="nav-links">
         <!-- Only the Sitemap link will show on mobile -->
         <a href="https://interlinkcvhs.org/sitemap" class="nav-link sitemap"><strong>Sitemap</strong></a>
     </div>
 </nav>
 
-<!-- Script to ensure that the sitemap link is hidden on desktop -->
+<!-- Script to hide/show nav based on screen size -->
 <script>
     function adjustNavLinks() {
-        const sitemapLink = document.querySelector('.sitemap');
-        const exploreDropdown = document.querySelector('.dropdown');
+        const desktopNav = document.getElementById('desktop-nav');
+        const mobileNav = document.getElementById('mobile-nav');
         
+        // Check if the screen size is mobile or desktop
         if (window.innerWidth > 768) {
-            sitemapLink.style.display = 'none';  // Hide Sitemap on desktop
-            exploreDropdown.style.display = 'inline-block';  // Show the Explore dropdown on desktop
+            desktopNav.style.display = 'flex';  // Show desktop navigation
+            mobileNav.style.display = 'none';   // Hide mobile navigation
         } else {
-            sitemapLink.style.display = 'block'; // Show Sitemap on mobile
-            exploreDropdown.style.display = 'none';  // Hide the Explore dropdown on mobile
+            desktopNav.style.display = 'none';  // Hide desktop navigation
+            mobileNav.style.display = 'flex';   // Show mobile navigation
         }
     }
 
