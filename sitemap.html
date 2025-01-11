@@ -18,7 +18,7 @@
             --header-background: rgba(255, 255, 255, 0.1);
             --border-color: #ddd;
             --hover-background: rgba(255, 255, 255, 0.2);
-            --dropdown-background: rgba(0, 0, 0, 0.75);
+            --dropdown-background: rgba(0, 0, 0, 0.5); /* Reduced opacity */
         }
 
         /* Main Section Styles */
@@ -30,11 +30,12 @@
         .nav {
             display: flex;
             flex-direction: column; /* Align links vertically */
-            align-items: flex-start;
+            align-items: center; /* Center the links */
             padding: 1rem;
             background: var(--header-background);
             backdrop-filter: blur(10px);
             margin-bottom: 20px;
+            text-align: center; /* Center text inside the links */
         }
 
         .nav-link {
