@@ -87,6 +87,11 @@
     .sidebar, #open-sidebar-button {
         display: none;
     }
+
+    /* Hide Sitemap link on desktop */
+    .nav .sitemap {
+        display: none;
+    }
 }
 </style>
 </head>
@@ -121,6 +126,22 @@
         <a href="https://interlinkcvhs.org/sitemap" class="nav-link sitemap"><strong>Sitemap</strong></a>
     </div>
 </nav>
+
+<!-- Script to ensure that the sitemap link is hidden on desktop -->
+<script>
+    function adjustNavLinks() {
+        const sitemapLink = document.querySelector('.sitemap');
+        if (window.innerWidth > 768) {
+            sitemapLink.style.display = 'none';  // Hide on desktop
+        } else {
+            sitemapLink.style.display = 'block'; // Show on mobile
+        }
+    }
+
+    // Run the function when the page loads and on window resize
+    window.addEventListener('load', adjustNavLinks);
+    window.addEventListener('resize', adjustNavLinks);
+</script>
 
 </body>
 </html>
