@@ -161,7 +161,7 @@
             <a href="https://interlinkcvhs.org">
                 <img src="https://interlinkcvhs.org/favicon.png" style="width:50px;height:50px">
             </a>
-            <h1 class="glow-text">Productivity Tools</h1>
+            <h1 class="glow-text">Sitemap</h1>
         </div>
     </header>
 
@@ -185,77 +185,6 @@
             <a href="https://interlinkcvhs.org/quizlets" class="nav-link"><strong>Quizlets</strong></a>
             <a href="https://interlinkcvhs.org/credits" class="nav-link"><strong>Credits</strong></a>
         </nav>
-
-        <div class="games-container">
-            <h2 class="section-title glow-text">Digital Tools</h2>
-            
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Search tools..." id="courseSearch">
-            </div>
-
-            <!-- Removed the resources-grid section as requested -->
-        </div>
     </main>
-
-    <script>
-        async function loadNav() {
-            try {
-                const response = await fetch('https://interlinkcvhs.org/navnav.html');
-                const nav = await response.text();
-                document.getElementById('nav-container').innerHTML = nav;
-            } catch (error) {
-                console.error('Error loading navigation:', error);
-                document.getElementById('nav-container').innerHTML = '<p>Error loading navigation. Please try again later.</p>';
-            }
-        }
-
-        async function loadBanner() {
-            try {
-                const response = await fetch('https://interlinkcvhs.org/banner.html');
-                const bannerContent = await response.text();
-                document.getElementById('banner-container').innerHTML = bannerContent;
-            } catch (error) {
-                console.error('Error loading banner:', error);
-                document.getElementById('banner-container').innerHTML = '<p>Error loading banner. Please try again later.</p>';
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            loadNav();
-            loadBanner();
-
-            const searchInput = document.getElementById('courseSearch');
-            const resourceCards = document.getElementsByClassName('resource-card');
-            const container = document.getElementById('resourcesContainer');
-
-            searchInput.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase();
-                let hasResults = false;
-
-                Array.from(resourceCards).forEach(card => {
-                    const title = card.querySelector('.resource-title').textContent.toLowerCase();
-                    if (title.includes(searchTerm)) {
-                        card.classList.remove('hidden');
-                        hasResults = true;
-                    } else {
-                        card.classList.add('hidden');
-                    }
-                });
-
-                // Show/hide no results message
-                let noResultsMsg = document.querySelector('.no-results');
-                if (!hasResults) {
-                    if (!noResultsMsg) {
-                        noResultsMsg = document.createElement('div');
-                        noResultsMsg.className = 'no-results';
-                        noResultsMsg.textContent = 'No search results.';
-                        container.appendChild(noResultsMsg);
-                    }
-                } else if (noResultsMsg) {
-                    noResultsMsg.remove();
-                }
-            });
-        });
-    </script>
 </body>
 </html>
