@@ -215,15 +215,7 @@
         function toggleDropdown(event) {
             event.stopPropagation();
             const dropdown = event.target.closest('.dropdown');
-            const wasOpen = dropdown.classList.contains('open');
-            
-            document.querySelectorAll('.dropdown').forEach(d => {
-                d.classList.remove('open');
-            });
-            
-            if (!wasOpen) {
-                dropdown.classList.add('open');
-            }
+            dropdown.classList.toggle('open');
         }
     </script>
 </body>
