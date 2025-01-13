@@ -184,7 +184,7 @@
             <nav class="nav">
                 <a href="https://interlinkcvhs.org" class="nav-link"><strong>Home</strong></a>
                 <div class="dropdown">
-                    <button class="dropbtn" onclick="toggleDropdown(event)"><strong>Explore</strong></button>
+                    <button class="dropbtn"><strong>Explore</strong></button>
                     <div class="dropdown-content">
                         <a href="https://interlinkcvhs.org/requests"><strong>Request Form</strong></a>
                         <a href="https://interlinkai.streamlit.app/"><strong>Interlink AI</strong></a>
@@ -203,20 +203,32 @@
     </main>
 
     <script>
-        document.addEventListener('click', function(event) {
-            const dropdowns = document.querySelectorAll('.dropdown');
+        const dropdowns = document.querySelectorAll('.dropdown');
+        
+        dropdowns.forEach(dropdown => {
+            const button = dropdown.querySelector('.dropbtn');
+            
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                // Close all other dropdowns
+                dropdowns.forEach(d => {
+                    if (d !== dropdown) {
+                        d.classList.remove('open');
+                    }
+                });
+                // Toggle current dropdown
+                dropdown.classList.toggle('open');
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
             dropdowns.forEach(dropdown => {
-                if (!dropdown.contains(event.target)) {
+                if (!dropdown.contains(e.target)) {
                     dropdown.classList.remove('open');
                 }
             });
         });
-
-        function toggleDropdown(event) {
-            event.stopPropagation();
-            const dropdown = event.target.closest('.dropdown');
-            dropdown.classList.toggle('open');
-        }
     </script>
 </body>
 </html>
