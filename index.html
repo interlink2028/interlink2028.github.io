@@ -53,22 +53,15 @@
             max-width: calc(33.333% - 14px);
         }
 
-        .tagline h1 {
-            font-family: 'Orbitron', sans-serif; /* Choose a clean, readable font */
-            font-size: 1vw; /* Default size for desktop */
-            color: #ffffff; /* Ensure good contrast */
-            text-align: center; /* Center-align the tagline */
-        }
-
         /* Removed mobile adjustments for .period-table and .tagline */
         @media screen and (max-width: 768px) {
             .glass-header {
                 padding: 10px;
             }
 
+            
             .tagline h1 {
-                font-size: 5vw; /* Larger font size for mobile */
-                line-height: 1.2; /* Adjust line spacing for readability */
+                display: none;
             }
 
             /* Adjust assignment layout to one per row on mobile (unchanged) */
