@@ -127,9 +127,8 @@
             background: var(--hover-background);
         }
 
-        .dropdown:hover .dropdown-content {
+        .dropdown.open .dropdown-content {
             display: block;
-            opacity: 1;
         }
 
         /* Additional Styling */
@@ -188,7 +187,7 @@
             <nav class="nav">
                 <a href="https://interlinkcvhs.org" class="nav-link"><strong>Home</strong></a>
                 <div class="dropdown">
-                    <button class="dropbtn"><strong>Explore</strong></button>
+                    <button class="dropbtn" onclick="toggleDropdown(event)"><strong>Explore</strong></button>
                     <div class="dropdown-content">
                         <a href="https://interlinkcvhs.org/requests"><strong>Request Form</strong></a>
                         <a href="https://interlinkai.streamlit.app/"><strong>Interlink AI</strong></a>
@@ -205,5 +204,13 @@
             </nav>
         </center>
     </main>
+
+    <script>
+        // Function to toggle the dropdown visibility
+        function toggleDropdown(event) {
+            const dropdown = event.target.closest('.dropdown');
+            dropdown.classList.toggle('open');
+        }
+    </script>
 </body>
 </html>
