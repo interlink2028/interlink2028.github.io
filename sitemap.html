@@ -46,6 +46,8 @@
             font-weight: normal;
             font-size: 18px;
             transition: background 0.3s ease;
+            width: 100%; /* Full width to match dropdown */
+            text-align: center; /* Ensure text is centered */
         }
 
         .nav-link:hover {
@@ -56,6 +58,7 @@
         .dropdown {
             position: relative;
             display: inline-block;
+            width: 100%; /* Full width to match nav links */
         }
 
         .dropbtn {
@@ -68,6 +71,10 @@
             font-size: 18px;
             font-weight: normal;
             transition: background 0.3s ease;
+            width: 100%; /* Match the width of the nav link */
+            text-align: center; /* Center text inside dropdown button */
+            display: inline-block;
+            position: relative;
         }
 
         .dropbtn:hover {
@@ -75,17 +82,33 @@
             border-radius: 5px;
         }
 
+        /* Triangle down icon for the dropdown button */
+        .dropbtn::after {
+            content: "";
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid var(--text-color); /* Downward triangle */
+        }
+
         .dropdown-content {
             display: none;
             position: absolute;
             background: var(--dropdown-background);
-            min-width: 200px;
+            width: 100%; /* Full width to match the nav button */
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
             z-index: 1;
             font-weight: normal;
             border-radius: 8px;
             overflow: hidden;
             transition: opacity 0.3s ease;
+            top: 100%; /* Align dropdown below the button */
+            left: 0;
         }
 
         .dropdown-content a {
@@ -96,6 +119,8 @@
             font-weight: normal;
             font-size: 16px;
             transition: background 0.3s ease;
+            width: 100%; /* Ensure links inside the dropdown take full width */
+            text-align: center; /* Center text inside dropdown */
         }
 
         .dropdown-content a:hover {
@@ -113,7 +138,7 @@
             max-width: 600px;
             text-align: center;
         }
-        
+
         .search-input {
             width: 100%;
             padding: 12px 20px;
