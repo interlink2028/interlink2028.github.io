@@ -234,6 +234,55 @@
 
     <script src="script.js"></script>
     <script>
+        // Add this to your existing JavaScript
+        function setupMobileModal() {
+            const content = document.querySelector('.content');
+            
+            // Add close button to content
+            const closeButton = document.createElement('div');
+            closeButton.className = 'modal-close';
+            closeButton.innerHTML = '×';
+            content.appendChild(closeButton);
+        
+            // Modified handleResourceClick function
+            function handleResourceClick(event) {
+                const allTitles = document.querySelectorAll('.resource-title');
+                allTitles.forEach(title => title.classList.remove('active'));
+                event.target.classList.add('active');
+                const url = event.target.getAttribute('data-url');
+                document.getElementById('contentFrame').src = url;
+                
+                // Show modal on mobile
+                if (window.innerWidth <= 768) {
+                    content.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+        
+            // Close modal when clicking outside iframe or on close button
+            function closeModal(event) {
+                if (
+                    window.innerWidth <= 768 && 
+                    (event.target === content || event.target === closeButton)
+                ) {
+                    content.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    document.getElementById('contentFrame').src = 'about:blank';
+                }
+            }
+        
+            // Add event listeners
+            content.addEventListener('click', closeModal);
+            closeButton.addEventListener('click', closeModal);
+            
+            // Update existing resource title click handlers
+            const resourceTitles = document.querySelectorAll('.resource-title');
+            resourceTitles.forEach(title => {
+                title.removeEventListener('click', handleResourceClick); // Remove old listeners
+                title.addEventListener('click', handleResourceClick);
+            });
+        }
+        
         // Load navigation from nav.html
         async function loadNav() {
             try {
