@@ -210,18 +210,15 @@
             
             button.addEventListener('click', (e) => {
                 e.stopPropagation();
-                // Close all other dropdowns
                 dropdowns.forEach(d => {
                     if (d !== dropdown) {
                         d.classList.remove('open');
                     }
                 });
-                // Toggle current dropdown
                 dropdown.classList.toggle('open');
             });
         });
 
-        // Close dropdown when clicking outside
         document.addEventListener('click', (e) => {
             dropdowns.forEach(dropdown => {
                 if (!dropdown.contains(e.target)) {
