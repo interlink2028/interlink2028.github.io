@@ -18,36 +18,34 @@
             --header-background: rgba(255, 255, 255, 0.1);
             --border-color: #ddd;
             --hover-background: rgba(255, 255, 255, 0.2);
-            --dropdown-background: rgba(0, 0, 0, 0.8); /* Reduced opacity */
+            --dropdown-background: rgba(0, 0, 0, 0.8);
         }
 
-        /* Main Section Styles */
         .main-content {
             padding: 20px;
         }
 
-        /* Navigation Styles */
         .nav {
             display: flex;
-            flex-direction: column; /* Align links vertically */
-            align-items: center; /* Center the links */
+            flex-direction: column;
+            align-items: center;
             padding: 1rem;
             background: var(--header-background);
             backdrop-filter: blur(10px);
             margin-bottom: 20px;
-            text-align: center; /* Center text inside the links */
+            text-align: center;
         }
 
         .nav-link {
             color: var(--text-color);
             text-decoration: none;
             padding: 0.5rem 1rem;
-            margin: 0.5rem 0; /* Margin between links */
+            margin: 0.5rem 0;
             font-weight: normal;
             font-size: 18px;
             transition: background 0.3s ease;
-            width: 100%; /* Full width to match dropdown */
-            text-align: center; /* Ensure text is centered */
+            width: 100%;
+            text-align: center;
         }
 
         .nav-link:hover {
@@ -58,7 +56,7 @@
         .dropdown {
             position: relative;
             display: inline-block;
-            width: 100%; /* Full width to match nav links */
+            width: 100%;
         }
 
         .dropbtn {
@@ -71,8 +69,8 @@
             font-size: 18px;
             font-weight: normal;
             transition: background 0.3s ease;
-            width: 100%; /* Match the width of the nav link */
-            text-align: center; /* Center text inside dropdown button */
+            width: 100%;
+            text-align: center;
             display: inline-block;
             position: relative;
         }
@@ -82,33 +80,34 @@
             border-radius: 5px;
         }
 
-        /* Triangle down icon for the dropdown button */
         .dropbtn::after {
             content: "";
             position: absolute;
             right: 10px;
             top: 50%;
-            transform: translateY(-50%);
+            transform: translateY(-50%) rotate(0deg);
             width: 0;
             height: 0;
             border-left: 6px solid transparent;
             border-right: 6px solid transparent;
-            border-top: 6px solid var(--text-color); /* Downward triangle */
+            border-top: 6px solid var(--text-color);
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown.open .dropbtn::after {
+            transform: translateY(-50%) rotate(180deg);
         }
 
         .dropdown-content {
+            position: static;
             display: none;
-            position: absolute;
             background: var(--dropdown-background);
-            width: 100%; /* Full width to match the nav button */
+            width: 100%;
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            z-index: 1;
-            font-weight: normal;
             border-radius: 8px;
             overflow: hidden;
-            transition: opacity 0.3s ease;
-            top: 100%; /* Align dropdown below the button */
-            left: 0;
+            transition: max-height 0.3s ease-in-out;
+            margin-top: 5px;
         }
 
         .dropdown-content a {
@@ -119,8 +118,8 @@
             font-weight: normal;
             font-size: 16px;
             transition: background 0.3s ease;
-            width: 100%; /* Ensure links inside the dropdown take full width */
-            text-align: center; /* Center text inside dropdown */
+            width: 100%;
+            text-align: center;
         }
 
         .dropdown-content a:hover {
@@ -131,7 +130,6 @@
             display: block;
         }
 
-        /* Additional Styling */
         .search-container {
             margin: 20px auto;
             max-width: 600px;
@@ -182,7 +180,6 @@
     </header>
 
     <main class="main-content">
-        <!-- Navigation for Desktop (Vertical) -->
         <center>
             <nav class="nav">
                 <a href="https://interlinkcvhs.org" class="nav-link"><strong>Home</strong></a>
@@ -206,10 +203,27 @@
     </main>
 
     <script>
-        // Function to toggle the dropdown visibility
+        document.addEventListener('click', function(event) {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            dropdowns.forEach(dropdown => {
+                if (!dropdown.contains(event.target)) {
+                    dropdown.classList.remove('open');
+                }
+            });
+        });
+
         function toggleDropdown(event) {
+            event.stopPropagation();
             const dropdown = event.target.closest('.dropdown');
-            dropdown.classList.toggle('open');
+            const wasOpen = dropdown.classList.contains('open');
+            
+            document.querySelectorAll('.dropdown').forEach(d => {
+                d.classList.remove('open');
+            });
+            
+            if (!wasOpen) {
+                dropdown.classList.add('open');
+            }
         }
     </script>
 </body>
