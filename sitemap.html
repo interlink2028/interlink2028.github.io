@@ -179,26 +179,32 @@
         dropdowns.forEach(dropdown => {
             const button = dropdown.querySelector('.dropbtn');
             const closeButton = dropdown.querySelector('.dropdown-icon-close'); // Select the X button
+            const dropdownContent = dropdown.querySelector('.dropdown-content'); // Select the dropdown content
             
             button.addEventListener('click', (e) => {
                 e.stopPropagation();  // Prevent the document listener from closing it immediately
-                dropdowns.forEach(d => {
-                    if (d !== dropdown) {
-                        d.classList.remove('open');
-                    }
-                });
+                
+                // Toggle visibility of the dropdown
+                dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+                
+                // Show/hide the triangle and X button
                 dropdown.classList.toggle('open');
             });
 
             closeButton.addEventListener('click', (e) => {
                 e.stopPropagation(); // Prevents the event from triggering the document listener
-                dropdown.classList.remove('open'); // Close the dropdown when "X" is clicked
+                
+                // Hide the dropdown content and reset button visibility
+                dropdownContent.style.display = 'none';
+                dropdown.classList.remove('open');
             });
         });
 
         document.addEventListener('click', (e) => {
             dropdowns.forEach(dropdown => {
+                const dropdownContent = dropdown.querySelector('.dropdown-content');
                 if (!dropdown.contains(e.target)) {
+                    dropdownContent.style.display = 'none';
                     dropdown.classList.remove('open');
                 }
             });
