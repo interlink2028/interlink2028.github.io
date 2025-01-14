@@ -81,21 +81,18 @@
         }
 
         .dropbtn::after {
-            content: "";
+            content: "▼";
             position: absolute;
             right: 10px;
             top: 50%;
-            transform: translateY(-50%) rotate(0deg);
-            width: 0;
-            height: 0;
-            border-left: 6px solid transparent;
-            border-right: 6px solid transparent;
-            border-top: 6px solid var(--text-color);
+            transform: translateY(-50%);
             transition: transform 0.3s ease;
+            font-size: 12px;
         }
 
         .dropdown.open .dropbtn::after {
-            transform: translateY(-50%) rotate(180deg);
+            content: "✕";
+            font-size: 14px;
         }
 
         .dropdown-content {
