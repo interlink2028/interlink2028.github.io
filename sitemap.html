@@ -178,15 +178,21 @@
         
         dropdowns.forEach(dropdown => {
             const button = dropdown.querySelector('.dropbtn');
+            const closeButton = dropdown.querySelector('.dropdown-icon-close'); // Select the X button
             
             button.addEventListener('click', (e) => {
-                e.stopPropagation();
+                e.stopPropagation();  // Prevent the document listener from closing it immediately
                 dropdowns.forEach(d => {
                     if (d !== dropdown) {
                         d.classList.remove('open');
                     }
                 });
                 dropdown.classList.toggle('open');
+            });
+
+            closeButton.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevents the event from triggering the document listener
+                dropdown.classList.remove('open'); // Close the dropdown when "X" is clicked
             });
         });
 
