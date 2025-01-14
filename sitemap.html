@@ -80,29 +80,16 @@
             border-radius: 5px;
         }
 
-        .dropdown-icon-open,
-        .dropdown-icon-close {
+        .dropdown-icon {
             position: absolute;
             right: 10px;
             top: 50%;
-            transform: translateY(-50%);
-            transition: opacity 0.3s ease;
+            transform: translateY(-50%) rotate(0deg);
+            transition: transform 0.3s ease;
         }
 
-        .dropdown-icon-open {
-            display: inline;
-        }
-
-        .dropdown-icon-close {
-            display: none;
-        }
-
-        .dropdown.open .dropdown-icon-open {
-            display: none;
-        }
-
-        .dropdown.open .dropdown-icon-close {
-            display: inline;
+        .dropdown.open .dropdown-icon {
+            transform: translateY(-50%) rotate(180deg);
         }
 
         .dropdown-content {
@@ -153,8 +140,7 @@
                 <div class="dropdown">
                     <button class="dropbtn">
                         <strong>Explore</strong>
-                        <span class="dropdown-icon-open">▼</span>
-                        <span class="dropdown-icon-close">✕</span>
+                        <span class="dropdown-icon">▼</span>
                     </button>
                     <div class="dropdown-content">
                         <a href="https://interlinkcvhs.org/requests"><strong>Request Form</strong></a>
@@ -178,7 +164,7 @@
         
         dropdowns.forEach(dropdown => {
             const button = dropdown.querySelector('.dropbtn');
-            const closeButton = dropdown.querySelector('.dropdown-icon-close'); // Select the X button
+            const dropdownIcon = dropdown.querySelector('.dropdown-icon'); // Select the triangle icon
             const dropdownContent = dropdown.querySelector('.dropdown-content'); // Select the dropdown content
             
             button.addEventListener('click', (e) => {
@@ -187,16 +173,8 @@
                 // Toggle visibility of the dropdown
                 dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
                 
-                // Show/hide the triangle and X button
+                // Toggle the rotation of the triangle icon
                 dropdown.classList.toggle('open');
-            });
-
-            closeButton.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevents the event from triggering the document listener
-                
-                // Hide the dropdown content and reset button visibility
-                dropdownContent.style.display = 'none';
-                dropdown.classList.remove('open');
             });
         });
 
