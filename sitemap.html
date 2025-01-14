@@ -80,31 +80,43 @@
             border-radius: 5px;
         }
 
-        .dropbtn::after {
-            content: "▼";
+        .dropdown-icon-open,
+        .dropdown-icon-close {
             position: absolute;
             right: 10px;
             top: 50%;
             transform: translateY(-50%);
-            transition: transform 0.3s ease;
-            font-size: 12px;
+            transition: opacity 0.3s ease;
         }
 
-        .dropdown.open .dropbtn::after {
-            content: "✕";
-            font-size: 14px;
+        .dropdown-icon-open {
+            display: inline;
+        }
+
+        .dropdown-icon-close {
+            display: none;
+        }
+
+        .dropdown.open .dropdown-icon-open {
+            display: none;
+        }
+
+        .dropdown.open .dropdown-icon-close {
+            display: inline;
         }
 
         .dropdown-content {
-            position: static;
             display: none;
             background: var(--dropdown-background);
             width: 100%;
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
             border-radius: 8px;
             overflow: hidden;
-            transition: max-height 0.3s ease-in-out;
             margin-top: 5px;
+        }
+
+        .dropdown.open .dropdown-content {
+            display: block;
         }
 
         .dropdown-content a {
@@ -121,48 +133,6 @@
 
         .dropdown-content a:hover {
             background: var(--hover-background);
-        }
-
-        .dropdown.open .dropdown-content {
-            display: block;
-        }
-
-        .search-container {
-            margin: 20px auto;
-            max-width: 600px;
-            text-align: center;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            border: 2px solid #ddd;
-            border-radius: 25px;
-            font-size: 16px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            color: white;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .search-input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: #4a90e2;
-        }
-
-        .no-results {
-            text-align: center;
-            padding: 20px;
-            color: white;
-            font-size: 18px;
-            margin-top: 20px;
-            font-family: 'Montserrat', sans-serif;
         }
     </style>
 </head>
@@ -181,7 +151,11 @@
             <nav class="nav">
                 <a href="https://interlinkcvhs.org" class="nav-link"><strong>Home</strong></a>
                 <div class="dropdown">
-                    <button class="dropbtn"><strong>Explore</strong></button>
+                    <button class="dropbtn">
+                        <strong>Explore</strong>
+                        <span class="dropdown-icon-open">▼</span>
+                        <span class="dropdown-icon-close">✕</span>
+                    </button>
                     <div class="dropdown-content">
                         <a href="https://interlinkcvhs.org/requests"><strong>Request Form</strong></a>
                         <a href="https://interlinkai.streamlit.app/"><strong>Interlink AI</strong></a>
