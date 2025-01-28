@@ -133,6 +133,9 @@
     </main>
 
     <script>
+        const SHEET_ID = '1VDAI3EJC7Wf9tp7TKr__Y6CFzalE5aw43bVq5Bk02NA';
+        const API_KEY = 'AIzaSyDFFmaGCZTbWVjedTxSyvkxg7obqvxDinw';
+        const SHEET_NAME = 'Sheet1';
         const STORAGE_KEY = 'savedClassSelections';
         
         const predefinedClasses = [
@@ -193,7 +196,7 @@
         }
         
         async function fetchAssignments() {
-            const url = `https://sheets.livepolls.app/api/spreadsheets/3e36ee2c-bc1b-40d8-8a52-60fec38c8e74/Sheet1`;
+            const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}?key=${API_KEY}`;
             
             try {
                 const response = await fetch(url);
@@ -202,7 +205,7 @@
                 if (!data.values || data.values.length === 0) {
                     throw new Error('No data found in sheet');
                 }
-            
+        
                 allAssignments = data.values.slice(1).map(assignment => {
                     return {
                         subject: assignment[0],
@@ -211,7 +214,7 @@
                         dueDateStr: assignment[1]
                     };
                 }).sort((a, b) => a.dueDate - b.dueDate);
-            
+        
                 updateDropdowns();
                 loadSavedSelections(); // Load saved selections after dropdowns are populated
             } catch (error) {
