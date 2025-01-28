@@ -133,9 +133,6 @@
     </main>
 
     <script>
-        const SHEET_ID = '1VDAI3EJC7Wf9tp7TKr__Y6CFzalE5aw43bVq5Bk02NA';
-        const API_KEY = 'AIzaSyDFFmaGCZTbWVjedTxSyvkxg7obqvxDinw';
-        const SHEET_NAME = 'Sheet1';
         const STORAGE_KEY = 'savedClassSelections';
         
         const predefinedClasses = [
@@ -196,7 +193,7 @@
         }
         
         async function fetchAssignments() {
-            const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}?key=${API_KEY}`;
+            const url = `https://sheets.livepolls.app/api/spreadsheets/bc22f5e2-4701-4634-a68b-dde44adcd317/Sheet1`;
             
             try {
                 const response = await fetch(url);
