@@ -193,7 +193,7 @@
         }
         
         async function fetchAssignments() {
-            const url = `https://sheets.livepolls.app/api/spreadsheets/bc22f5e2-4701-4634-a68b-dde44adcd317/Sheet1`;
+            const url = `https://sheets.livepolls.app/api/spreadsheets/3e36ee2c-bc1b-40d8-8a52-60fec38c8e74/Sheet1`;
             
             try {
                 const response = await fetch(url);
@@ -202,7 +202,7 @@
                 if (!data.values || data.values.length === 0) {
                     throw new Error('No data found in sheet');
                 }
-        
+            
                 allAssignments = data.values.slice(1).map(assignment => {
                     return {
                         subject: assignment[0],
@@ -211,7 +211,7 @@
                         dueDateStr: assignment[1]
                     };
                 }).sort((a, b) => a.dueDate - b.dueDate);
-        
+            
                 updateDropdowns();
                 loadSavedSelections(); // Load saved selections after dropdowns are populated
             } catch (error) {
